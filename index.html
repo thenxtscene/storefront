@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f27422" />
+    <meta
+      name="description"
+      content="Private storefront prototype for The Nxt Scene — scene-led streetwear for the moments that stay with you."
+    />
+    <title>The Nxt Scene — Private Storefront Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#drops">Skip to current drops</a>
+
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="The Nxt Scene home">
+        <img src="assets/tns-logo.webp" alt="The Nxt Scene" />
+      </a>
+      <nav>
+        <a href="#drops">Drops</a>
+        <a href="#ordering">How to order</a>
+      </nav>
+      <button class="bag-button" id="bagButton" type="button" aria-label="View cart">
+        <span>Cart</span>
+        <span class="bag-count" id="bagCount" aria-live="polite">0</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Drop 01 / Private preview</p>
+          <h1 id="hero-title">Wear the scene<br />before it changes.</h1>
+          <p class="hero-intro">
+            Oversized streetwear for music loops, late shows, quiet rebellion and every frame in between.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#drops">Enter the drop</a>
+            <a class="text-link" href="#ordering">See how ordering works <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+
+        <div class="hero-frame reveal" aria-label="The Nxt Scene campaign artwork">
+          <div class="film-edge film-edge-left" aria-hidden="true"></div>
+          <div class="frame-noise"></div>
+          <div class="hero-stamp"><img src="assets/tns-logo.webp" alt="" /></div>
+          <p class="scene-label">A scene worth<br />wearing twice.</p>
+          <div class="frame-caption">
+            <span>Independent / Pune</span>
+            <span>Limited run</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="drops" id="drops" aria-labelledby="drops-title">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Now screening</p>
+            <h2 id="drops-title">Current drops</h2>
+          </div>
+          <p>Six designs. One scene. Tap any piece to inspect the print, fit and the exact colourways currently shown. Shipping is included.</p>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Filter current drops">
+          <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">All drops</button>
+          <button class="filter-chip" type="button" data-filter="oversized" aria-pressed="false">Oversized tees</button>
+          <button class="filter-chip" type="button" data-filter="hoodie" aria-pressed="false">Hoodies</button>
+        </div>
+
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="ordering" id="ordering" aria-labelledby="ordering-title">
+        <div class="order-poster reveal">
+          <span class="poster-index">03 / PROCESS</span>
+          <p>Small run.<br />Direct order.<br />No noise.</p>
+          <span class="poster-foot">Made after you choose</span>
+        </div>
+
+        <div class="order-copy reveal">
+          <p class="eyebrow">Simple by design</p>
+          <h2 id="ordering-title">Choose here.<br />Checkout here.</h2>
+          <ol class="order-steps">
+            <li><span>01</span><div><strong>Pick your scene</strong><p>Inspect a design, choose a colour and select your size.</p></div></li>
+            <li><span>02</span><div><strong>Build your cart</strong><p>Add one or more pieces and adjust quantities without losing your selections.</p></div></li>
+            <li><span>03</span><div><strong>Checkout securely</strong><p>Share delivery details once, review the final total and continue to Razorpay.</p></div></li>
+          </ol>
+          <p class="prototype-note"><span aria-hidden="true">●</span> Private preview — integrated cart and checkout are ready. Secure dynamic Razorpay order creation still requires the protected backend connection shown at checkout.</p>
+        </div>
+      </section>
+
+      <section class="checkout" id="checkout" aria-labelledby="checkout-title">
+        <div class="checkout-heading reveal">
+          <p class="eyebrow">Final frame</p>
+          <h2 id="checkout-title">Checkout</h2>
+          <p>Your cart already carries every design, colour, size and quantity. Add only the delivery details needed to fulfil the order.</p>
+        </div>
+
+        <div class="checkout-layout reveal">
+          <form class="customer-form" id="checkoutForm" novalidate>
+            <div class="form-heading">
+              <span>01 / Delivery details</span>
+              <p>Required fields are marked with *</p>
+            </div>
+            <div class="form-grid">
+              <label class="field field-wide">Full name *
+                <input id="customerName" name="fullName" type="text" autocomplete="name" required />
+              </label>
+              <label class="field">Email *
+                <input id="customerEmail" name="email" type="email" autocomplete="email" required />
+              </label>
+              <label class="field">Mobile number *
+                <input id="customerMobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" required />
+              </label>
+              <label class="field field-wide">Address line *
+                <textarea id="customerAddress" name="address" autocomplete="street-address" rows="3" required></textarea>
+              </label>
+              <label class="field field-wide">Landmark / Apartment / Building <span>Optional</span>
+                <input id="customerLandmark" name="landmark" type="text" autocomplete="address-line2" />
+              </label>
+              <label class="field">City *
+                <input id="customerCity" name="city" type="text" autocomplete="address-level2" required />
+              </label>
+              <label class="field">State *
+                <input id="customerState" name="state" type="text" autocomplete="address-level1" required />
+              </label>
+              <label class="field">PIN code *
+                <input id="customerPin" name="pinCode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" maxlength="6" required />
+              </label>
+            </div>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+
+          <aside class="checkout-summary" aria-labelledby="summary-title">
+            <div class="form-heading">
+              <span>02 / Order summary</span>
+              <p id="summary-title">Final payable amount</p>
+            </div>
+            <div class="summary-empty" id="checkoutEmpty">
+              <p>Your cart is empty.</p>
+              <a class="button button-secondary" href="#drops">Browse the drop</a>
+            </div>
+            <div id="checkoutWithItems" hidden>
+              <div class="checkout-items" id="checkoutItems"></div>
+              <dl class="totals-list">
+                <div><dt>Subtotal</dt><dd id="checkoutSubtotal">₹0</dd></div>
+                <div><dt>Shipping</dt><dd class="free-shipping">FREE</dd></div>
+                <div class="total-row"><dt>Total payable</dt><dd id="checkoutTotal">₹0</dd></div>
+              </dl>
+              <button class="button button-primary payment-button" id="paymentButton" type="submit" form="checkoutForm">Continue to secure Razorpay</button>
+              <p class="payment-copy">The payment amount will come from this cart total—never from a fixed price or customer-entered amount.</p>
+              <div class="backend-notice" id="backendNotice" hidden tabindex="-1">
+                <strong>Secure payment connection required</strong>
+                <p>A protected server must create the Razorpay Order for this exact total and verify the payment signature before an order can be confirmed. No Razorpay secret key is stored in this storefront.</p>
+                <button class="text-button" id="previewConfirmation" type="button">Preview confirmation screen — no payment</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <div class="confirmation-card">
+          <p class="eyebrow" id="confirmationEyebrow">Payment verified</p>
+          <h2 id="confirmation-title">YOU'RE IN. ⚡</h2>
+          <h3>ORDER CONFIRMED</h3>
+          <p class="confirmation-lead">Your scene is officially in motion.</p>
+          <div class="confirmation-details">
+            <div><span>Order / reference</span><strong id="confirmationReference"></strong></div>
+            <div><span>Amount paid</span><strong id="confirmationAmount"></strong></div>
+            <div><span>Customer email</span><strong id="confirmationEmail"></strong></div>
+          </div>
+          <div class="confirmation-products">
+            <span>Products ordered</span>
+            <div id="confirmationProducts"></div>
+          </div>
+          <p class="demo-label" id="confirmationDemoLabel" hidden>Prototype preview only — no payment was processed.</p>
+          <button class="button button-primary" id="continueShopping" type="button">Continue shopping</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand brand-footer" href="#top"><img src="assets/tns-logo.webp" alt="The Nxt Scene" /></a>
+      <p>Streetwear for the scene you’re in.</p>
+      <p class="footer-note">Private storefront prototype / 2026</p>
+    </footer>
+
+    <div class="modal-shell" id="productModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="icon-button modal-close" type="button" data-close-modal aria-label="Close product details">×</button>
+        <div class="modal-visual" id="modalVisual"></div>
+        <div class="modal-content">
+          <p class="eyebrow" id="modalEdition"></p>
+          <h2 id="modalTitle"></h2>
+          <p class="modal-description" id="modalDescription"></p>
+          <div class="spec-row" id="modalSpecs"></div>
+
+          <fieldset>
+            <legend>Colour <span id="selectedColourLabel"></span></legend>
+            <div class="swatches" id="colourOptions"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Size <span class="selection-hint" id="sizeHint">Select one</span></legend>
+            <div class="size-options" id="sizeOptions"></div>
+          </fieldset>
+
+          <div class="modal-purchase">
+            <div><span>Final price</span><strong id="modalPrice"></strong><small>Shipping included</small></div>
+            <button class="button button-primary" id="addToOrder" type="button" disabled>Choose a size</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="order-drawer" id="orderDrawer" aria-hidden="true" aria-labelledby="drawerTitle">
+      <div class="drawer-header">
+        <div><p class="eyebrow">Your cart</p><h2 id="drawerTitle">The scene so far</h2></div>
+        <button class="icon-button" id="closeDrawer" type="button" aria-label="Close cart">×</button>
+      </div>
+      <div class="drawer-empty" id="drawerEmpty">
+        <p>No pieces added yet.</p>
+        <a class="button button-secondary" href="#drops" id="browseFromDrawer">Browse the drop</a>
+      </div>
+      <div class="drawer-cart" id="drawerCart" hidden>
+        <div class="cart-items" id="cartItems"></div>
+        <dl class="totals-list drawer-totals">
+          <div><dt>Subtotal</dt><dd id="drawerSubtotal">₹0</dd></div>
+          <div><dt>Shipping</dt><dd class="free-shipping">FREE</dd></div>
+          <div class="total-row"><dt>Total payable</dt><dd id="drawerTotal">₹0</dd></div>
+        </dl>
+        <div class="drawer-actions">
+          <button class="button button-primary" id="goToCheckout" type="button">Checkout</button>
+          <button class="button button-secondary" id="continueFromDrawer" type="button">Continue shopping</button>
+        </div>
+        <button class="clear-order" id="clearOrder" type="button">Clear cart</button>
+      </div>
+    </aside>
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
